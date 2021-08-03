@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.myxy.net</id>
     <title>Maxbad`Blog</title>
-    <updated>2021-06-28T15:35:14.675Z</updated>
+    <updated>2021-08-03T05:44:46.009Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.myxy.net"/>
     <link rel="self" href="https://blog.myxy.net/atom.xml"/>
@@ -10,6 +10,21 @@
     <logo>https://blog.myxy.net/images/avatar.png</logo>
     <icon>https://blog.myxy.net/favicon.ico</icon>
     <rights>All rights reserved 2021, Maxbad`Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[JavaScript 函数使用]]></title>
+        <id>https://blog.myxy.net/javascript-han-shu-shi-yong/</id>
+        <link href="https://blog.myxy.net/javascript-han-shu-shi-yong/">
+        </link>
+        <updated>2021-08-03T05:43:27.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="startswith">startsWith</h1>
+<blockquote>
+<p>查看字符串是否为 &quot;xxx&quot; 开头:</p>
+</blockquote>
+<pre><code>var str = &quot;Hello world, welcome to the Runoob.&quot;;
+var n = str.startsWith(&quot;Hello&quot;);
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[网页HTML元素常用操作]]></title>
         <id>https://blog.myxy.net/wang-ye-yuan-su-chang-yong-cao-zuo/</id>
@@ -393,134 +408,6 @@ private:
         <updated>2021-04-14T00:48:39.000Z</updated>
         <content type="html"><![CDATA[<p><code>cons</code>t默认作用于其左边的东西，否则作用于其右边的东西</p>
 <p><code>const</code>在<code>*</code>的左边，值不能修改。<code>const</code>在<code>*</code>的右边，地址不能修改</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[vue2-ace-editor ]]></title>
-        <id>https://blog.myxy.net/vue2-ace-editor/</id>
-        <link href="https://blog.myxy.net/vue2-ace-editor/">
-        </link>
-        <updated>2021-04-13T12:21:20.000Z</updated>
-        <content type="html"><![CDATA[<p><a href="https://www.npmjs.com/package/vue2-ace-editor4">https://www.npmjs.com/package/vue2-ace-editor4</a></p>
-<pre><code class="language-js">var ace = require('brace');
-
-module.exports = {
-    render: function (h) {
-        var height = this.height ? this.px(this.height) : '100%'
-        var width = this.width ? this.px(this.width) : '100%'
-        return h('div', {
-            attrs: {
-                style: &quot;height: &quot; + height + '; width: ' + width,
-            }
-        })
-    },
-    props: {
-        value: String,
-        lang: true,
-        theme: String,
-        height: true,
-        width: true,
-        autoComplete: false, //源码中添加该配置
-        options: Object
-    },
-    data: function () {
-        return {
-            editor: null,
-            contentBackup: &quot;&quot;
-        }
-    },
-    methods: {
-        px: function (n) {
-            if (/^\d*$/.test(n)) {
-                return n + &quot;px&quot;;
-            }
-            return n;
-        }
-    },
-    watch: {
-        value: function (val) {
-            if (this.contentBackup !== val) {
-                this.editor.session.setValue(val, 1);
-                this.contentBackup = val;
-            }
-        },
-        theme: function (newTheme) {
-            this.editor.setTheme('ace/theme/' + newTheme);
-        },
-        lang: function (newLang) {
-            this.editor.getSession().setMode(typeof newLang === 'string' ? ('ace/mode/' + newLang) : newLang);
-        },
-        options: function (newOption) {
-            this.editor.setOptions(newOption);
-        },
-        height: function () {
-            this.$nextTick(function () {
-                this.editor.resize()
-            })
-        },
-        width: function () {
-            this.$nextTick(function () {
-                this.editor.resize()
-            })
-        }
-    },
-    beforeDestroy: function () {
-        this.editor.destroy();
-        this.editor.container.remove();
-    },
-    mounted: function () {
-        var _this = this //插入该行，直接使用this会报错
-        var vm = this;
-        var lang = this.lang || 'text';
-        var theme = this.theme || 'chrome';
-        var autoComplete = this.autoComplete || false //插入该行
-        require('brace/ext/emmet');
-
-        var editor = vm.editor = ace.edit(this.$el);
-        editor.$blockScrolling = Infinity;
-
-        this.$emit('init', editor);
-
-        //editor.setOption(&quot;enableEmmet&quot;, true);
-        editor.getSession().setMode(typeof lang === 'string' ? ('ace/mode/' + lang) : lang);
-        editor.setTheme('ace/theme/' + theme);
-        if (this.value)
-            editor.setValue(this.value, 1);
-        this.contentBackup = this.value;
-
-        // 插入以下代码块
-        if (autoComplete) {
-            var staticWordCompleter = {
-                getCompletions: function (editor, session, pos, prefix, callback) {
-                    _this.$emit('setCompletions', editor, session, pos, prefix, callback)
-                }
-            }
-            var lnTools = ace.acequire(&quot;ace/ext/language_tools&quot;)
-            lnTools.addCompleter(staticWordCompleter)
-            editor.setOptions({
-                enableBasicAutocompletion: true,
-                enableSnippets: true,
-                enableLiveAutocompletion: true, //智能补全
-            })
-        }
-        editor.on('change', function () {
-            var content = editor.getValue();
-            vm.$emit('input', content);
-            vm.contentBackup = content;
-        });
-        // newadd
-        editor.on('focus', function () {
-            vm.$emit('focus');
-        });
-        // newadd
-        editor.on('blur', function () {
-            vm.$emit('blur');
-        });
-        if (vm.options)
-            editor.setOptions(vm.options);
-    }
-}
-</code></pre>
 ]]></content>
     </entry>
 </feed>
