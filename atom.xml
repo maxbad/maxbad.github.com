@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.myxy.net</id>
     <title>Maxbad`Blog</title>
-    <updated>2021-08-03T05:44:46.009Z</updated>
+    <updated>2021-08-19T14:36:57.737Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.myxy.net"/>
     <link rel="self" href="https://blog.myxy.net/atom.xml"/>
@@ -10,6 +10,53 @@
     <logo>https://blog.myxy.net/images/avatar.png</logo>
     <icon>https://blog.myxy.net/favicon.ico</icon>
     <rights>All rights reserved 2021, Maxbad`Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[数组遍历]]></title>
+        <id>https://blog.myxy.net/shu-zu-bian-li/</id>
+        <link href="https://blog.myxy.net/shu-zu-bian-li/">
+        </link>
+        <updated>2021-08-17T11:31:24.000Z</updated>
+        <content type="html"><![CDATA[<p><code>filter()</code>、<code>concat()</code> 和 <code>slice()</code>。它们不会变更原始数组，而总是返回一个新数组</p>
+<h2 id="foreach">forEach</h2>
+<blockquote>
+<p>forEach是最简单、最常用的数组遍历方法，它提供一个回调函数，可用于处理数组的每一个元素，默认没有返回值。</p>
+</blockquote>
+<pre><code>let arr=[1,2,3,4,5]
+
+</code></pre>
+<h2 id="map">map</h2>
+<blockquote>
+<p>map，从字面上理解，是映射，即数组元素的映射。它提供一个回调函数，参数依次为处于当前循环的元素、该元素下标、数组本身，三者均可选。默认返回一个数组，这个新数组的每一个元素都是原数组元素执行了回调函数之后的返回值。</p>
+</blockquote>
+<p><strong>map方法不改变原数组。</strong></p>
+<pre><code>let arr=[1,2,3,4,5]
+
+</code></pre>
+<h2 id="filter">filter</h2>
+<blockquote>
+<p>过滤，即对数组元素的一个条件筛选。它提供一个回调函数，参数依次为处于当前循环的元素、该元素下标、数组本身，三者均可选。默认返回一个数组，原数组的元素执行了回调函数之后返回值若为true，则会将这个元素放入返回的数组中。</p>
+</blockquote>
+<p><strong>filter方法不改变原数组</strong></p>
+<h2 id="some-every">some、every</h2>
+<blockquote>
+<p>some方法和every的用法非常类似，提供一个回调函数，参数依次为处于当前循环的元素、该元素下标、数组本身，三者均可选。<br>
+数组的每一个元素都会执行回调函数，当返回值全部为true时，every方法会返回true，只要有一个为false，every方法返回false。当有一个为true时，some方法返回true，当全部为false时，every方法返回false。</p>
+</blockquote>
+<p><strong>some、every方法不改变原数组</strong></p>
+<h2 id="reduce">reduce</h2>
+<blockquote>
+<p>reduce方法有两个参数，第一个参数是一个回调函数（必须），第二个参数是初始值（可选）。回调函数有四个参数，依次为本轮循环的累计值、当前循环的元素（必须），该元素的下标（可选），数组本身（可选）。</p>
+</blockquote>
+<p>reduce方法，会让数组的每一个元素都执行一次回调函数，并将上一次循环时回调函数的返回值作为下一次循环的初始值，最后将这个结果返回。</p>
+<p>如果没有初始值，则reduce会将数组的第一个元素作为循环开始的初始值，第二个元素开始执行回调函数。</p>
+<p>最常用、最简单的场景，是数组元素的累加、累乘。</p>
+<h2 id="for-of">for of</h2>
+<blockquote>
+<p>es6新增了interator接口的概念，目的是对于所有数据结构提供一种统一的访问机制，这种访问机制就是for of。<br>
+即：所有有interator接口的数据，都能用for of遍历。常见的包括数组、类数组、Set、Map等都有interator接口。</p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[JavaScript 函数使用]]></title>
         <id>https://blog.myxy.net/javascript-han-shu-shi-yong/</id>
@@ -398,16 +445,6 @@ private:
 	const noncopyable&amp; operator=(const noncopyable&amp;) = delete;
 };
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[const int* 与 int const*]]></title>
-        <id>https://blog.myxy.net/const-int-yu-int-const/</id>
-        <link href="https://blog.myxy.net/const-int-yu-int-const/">
-        </link>
-        <updated>2021-04-14T00:48:39.000Z</updated>
-        <content type="html"><![CDATA[<p><code>cons</code>t默认作用于其左边的东西，否则作用于其右边的东西</p>
-<p><code>const</code>在<code>*</code>的左边，值不能修改。<code>const</code>在<code>*</code>的右边，地址不能修改</p>
 ]]></content>
     </entry>
 </feed>
