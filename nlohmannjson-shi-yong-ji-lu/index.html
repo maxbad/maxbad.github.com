@@ -58,6 +58,9 @@
         <div class="markdown mb-8" v-pre>
           <p><a href="https://github.com/nlohmann/json">nlohmann</a>库是C++解析json的库，库使用很简单，程序中使用nlohmann仅需要将json.hpp添加到工程中即可。<a href="https://nlohmann.github.io/json/">在线帮助文档</a></p>
 <p>介绍:<a href="https://blog.csdn.net/qq_26189301/article/details/108254642">https://blog.csdn.net/qq_26189301/article/details/108254642</a></p>
+<h2 id="抛出详细的异常">抛出详细的异常</h2>
+<pre><code>定义一下宏 JSON_DIAGNOSTICS
+</code></pre>
 <h2 id="定义一个json对象">定义一个JSON对象:</h2>
 <pre><code>//定义一个JSON对象
 nlohmann::json ret_json = { {&quot;code&quot;, 1}, {&quot;msg&quot;, u8&quot;系统开小差, 请稍后再试啊啊啊!&quot;} };
@@ -188,6 +191,7 @@ int fob_present = o.count(&quot;fob&quot;); // 0
         <ul class="markdownIt-TOC">
 <li>
 <ul>
+<li><a href="#%E6%8A%9B%E5%87%BA%E8%AF%A6%E7%BB%86%E7%9A%84%E5%BC%82%E5%B8%B8">抛出详细的异常</a></li>
 <li><a href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AAjson%E5%AF%B9%E8%B1%A1">定义一个JSON对象:</a></li>
 <li><a href="#%E6%89%93%E5%8D%B0json%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AE%B9">打印json对象内容</a></li>
 <li><a href="#%E9%80%9A%E8%BF%87key%E5%88%A0%E9%99%A4">通过key删除</a></li>
